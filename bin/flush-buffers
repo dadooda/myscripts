@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+#
+# Flush read buffers for reliable filesystem tests.
+#
+
+set -x
+sudo sh -c 'echo 3 >/proc/sys/vm/drop_caches'

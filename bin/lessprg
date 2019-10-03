@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+#
+# Do a `less` on a program.
+#
+
+SN=${0##*/}
+
+if [ "$#" = 0 ]; then
+  echo "USAGE: $SN <program>" >&2
+  exit 1
+fi
+
+less `which $1`

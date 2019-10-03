@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+#
+# Print disk usage in the current directory in a smart way.
+#
+#   $ sudo mkdu | tee _du
+#
+
+OBJS=`find . -maxdepth 1 -printf "%f\n"`
+IFS='
+'
+
+(
+  for OBJ in $OBJS
+  do
+    du -ks --one-file-system "$OBJ"
+  done
+) | sort -rn

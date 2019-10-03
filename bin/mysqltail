@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# OPTIMIZE: Allow to configure per system!
+
+set -x
+tail -f /var/log/mysql/error.log

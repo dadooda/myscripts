@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+#
+# Print a noticeable separator, then optionally run arguments as a command.
+#
+#   $ sep
+#   $ ls -l
+#
+#   $ sep ls -l
+#
+
+cat<<EOT
+
+8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 -
+ 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8
+8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 -
+
+EOT
+
+"$@"

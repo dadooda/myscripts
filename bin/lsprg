@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+#
+# Do an `ls -l` on a program.
+#
+
+SN=${0##*/}
+
+if [ "$#" = 0 ]; then
+  echo "USAGE: $SN <program>" >&2
+  exit 1
+fi
+
+ls -l `which $1`

@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+#
+# Grep in `*.ext` files recusrively.
+# To specify custom extensions, create symlinks to this script:
+#
+#   $ ln -s grep-ext grep-c
+#   $ ln -s grep-ext grep-php
+#   $ ...
+#
+
+# Set strict mode.
+set -u -o pipefail
+
+SN=${0##*/}
+EXT=${SN#grep-}
+
+if [ $# = 0 ]; then
+  echo "grep in *.$EXT files" >&2
+  echo "USAGE: $SN [grep-opts] <string>" >&2
+  exit 1
+fi
+
+echo "### grep $@ in *.$EXT files" >&2
+
+# Find files. Include dotfiles, too.
+FILES=`find -L . -type f | grep ".$EXT\$"`
+IFS='
+'
+for FILE in $FILES
+do
+  grep -H "$@" $FILE
+done

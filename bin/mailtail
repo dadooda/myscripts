@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# OPTIMIZE: Allow to configure per system!
+
+set -x
+sudo tail -f /var/log/mail.log

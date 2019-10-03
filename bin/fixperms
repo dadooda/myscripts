@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+
+#
+# Recursively set file or directory permissions. Use with care.
+#
+
+# TODO: Brush up!
+
+# NOTE: 'fixperm' existed in early Linux distributions, hence our name is 'fixperms'.
+
+SN=${0##*/}
+
+#----------------------------- Configuration
+
+C_VERSION="0.03"
+C_COPYRIGHT="(c) 2004-2011 Alex Fortuna"
+
+#----------------------------- Main
+
+if [ $# -lt 2 ]; then
+  echo "$SN $C_VERSION $C_COPYRIGHT" >&2
+  echo "USAGE: $SN <type> <perm> ['yes']" >&2
+  echo "EXAMPLES:" >&2
+  echo -e "$SN f 644\t\t- view commands to set all files to 644" >&2
+  echo -e "$SN d 755\t\t- view commands to set all dirs to 755" >&2
+  echo -e "$SN d 755 yes\t- recursively set all dirs to 755" >&2
+  echo ""
+  echo "Use with care!!!" >&2
+  exit 1
+fi
+
+TYPE="$1"
+MODE="$2"
+YES="$3"
+
+if [ -n "$YES" ]; then
+  echo "Commands WILL be executed"
+  cmd()
+  {
+    echo "### $@"
+    "$@"
+  }
+else
+  echo "Commands will not be executed"
+  cmd()
+  {
+    echo "### $@"
+  }
+fi
+
+# Find recursively, exclude ".".
+OBJS=`find . -type $TYPE -path "./*"`
+IFS='
+'
+for OBJ in $OBJS
+do
+  OBJ="${OBJ%/}"
+  cmd chmod $MODE "$OBJ"
+done

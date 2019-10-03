@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+#
+# Less an RC script.
+#
+
+SN=${0##*/}
+
+if [ "$#" = 0 ]; then
+  echo "USAGE: $SN <script>" >&2
+  exit 1
+fi
+
+less /etc/init.d/$1
