@@ -1,4 +1,4 @@
-#/usr/bin/env bash
+#!/usr/bin/env bash
 
 #
 # Print parts of my typical (highly opinionated) `.gitignore`.
