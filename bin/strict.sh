@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #
-# Print Bash strict mode code.
+# Print Bash code.
 #
 
 echo '# Set strict mode.

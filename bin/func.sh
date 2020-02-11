@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #
-# Print Bash miscellaneous functions.
+# Print Bash code.
 #
 
 echo '# Return 0 if verbose.

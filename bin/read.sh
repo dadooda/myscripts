@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #
-# Print examples of how to read input in Bash.
+# Print Bash code.
 #
 
 echo 'DFL="Y"; read -ep "Run above command? [$DFL]: "

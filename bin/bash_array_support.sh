@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-# Print Bash array support checking code.
+#
+# Print Bash code.
+#
 
 echo '# Check for array support.
 _TEST=(0 1 2); if [ "${_TEST[1]}" != "1" ]; then

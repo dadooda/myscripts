@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+#
+# Make a Git commit with an arbitrary date (usually, set in the past).
+#
+
+# Set strict mode.
+set -u -o pipefail
+
+# Get script name.
+SN=${0##*/}
+
+if [ $# = 0 ]; then
+  echo "USAGE: $SN <git-commit args>" >&2
+  echo "EXAMPLE: GIT_PASTCOMMIT_DATE=2019-01-02 $SN -a" >&2
+  exit 1
+fi
+
+if [ -z "${GIT_PASTCOMMIT_DATE:-}" ]; then
+  echo "GIT_PASTCOMMIT_DATE= must be set (format YYYY-MM-DD)" >&2
+  exit 1
+fi
+
+T=`date +%H:%M:%S`
+D="${GIT_PASTCOMMIT_DATE}T${T}"
+
+set -x
+GIT_AUTHOR_DATE=${D} GIT_COMMITTER_DATE=${D} git commit "$@"
