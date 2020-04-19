@@ -16,12 +16,18 @@ SN=${0##*/}
 EXT=${SN#grep-}
 
 if [ $# = 0 ]; then
-  echo "grep in *.$EXT files" >&2
-  echo "USAGE: $SN [grep-opts] <string>" >&2
+  echo "egrep in *.$EXT files" >&2
+  echo "USAGE: $SN <string> [grep-opts]" >&2
+  echo "EXAMPLES:"
+  echo "* $SN OPTIMIZE"
+  echo "* $SN 'TODO|OPTIMIZE'"
   exit 1
 fi
 
-echo "### grep $@ in *.$EXT files" >&2
+KEY="$1"; shift
+OPTS="$@"
+
+echo "### egrep \"$KEY\" in *.$EXT files" >&2
 
 # Find files. Include dotfiles, too.
 FILES=`find -L . -type f | grep ".$EXT\$"`
@@ -29,5 +35,5 @@ IFS='
 '
 for FILE in $FILES
 do
-  grep -H "$@" $FILE
+  egrep -H $OPTS "$KEY" "$FILE"
 done

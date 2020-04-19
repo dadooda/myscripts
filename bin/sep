@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
 
 #
-# Print a noticeable separator, then optionally run arguments as a command.
+# Print a noticeable separator.
 #
-#   $ sep
-#   $ ls -l
-#
-#   $ sep ls -l
+#   $ sep; ls -l
 #
 
 cat<<EOT
@@ -16,5 +13,3 @@ cat<<EOT
 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 - 8 -
 
 EOT
-
-"$@"

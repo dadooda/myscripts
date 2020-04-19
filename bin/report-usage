@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+#
+# Report filesystem object size, owner and other details related to housekeeping.
+# Works from STDIN.
+#
+
+# Get script name & path.
+SN=${0##*/}
+SP=${0%/*}
+
+# Set strict mode.
+set -u -o pipefail
+
+while read FN;
+do
+  RFN=`realpath "$FN"`
+  # OPTIMIZE: Store & check uniqueness of RFN reported.
+  echo "$RFN"
+  echo -n "  "; du -hs "$RFN" 2> /dev/null
+  echo -n "  "; ls -ld "$RFN" 2> /dev/null
+done

@@ -1,0 +1,6 @@
+
+# Old etc.
+*.old*
+*.orig
+/*.patch
+*.ref*

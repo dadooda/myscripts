@@ -4,6 +4,5 @@
 # Print Bash code.
 #
 
-echo '# Get script name & path.
-SN=${0##*/}
-SP=${0%/*}'
+echo '# Get script name.
+SN=${0##*/}'

@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+#
+# YARD auto-reloadable documentation server.
+#
+#   $ cd project
+#   $ yard-server
+#   $ cd random_src
+#   $ yard-server '*.rb'
+#
+
+# Get script name & path.
+SN=${0##*/}
+SP=${0%/*}
+
+# Set strict mode.
+set -u -o pipefail
+
+A=(
+  --bind 0.0.0.0
+  --reload
+)
+
+while true;
+do
+  if [ -d .yardoc ]; then
+    (set -x; rm -rf doc .yardoc)
+  fi
+
+  bx yard doc "$@" || exit 1
+  bx yard server ${A[@]} || exit 1
+done

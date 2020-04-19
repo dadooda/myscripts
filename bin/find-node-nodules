@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+#
+# Recursively find `node_modules/` from the specified path.
+#
+
+# Get script name & path.
+SN=${0##*/}
+SP=${0%/*}
+
+# Set strict mode.
+set -u -o pipefail
+
+if [ $# = 0 ]; then
+  echo "USAGE: $SN <path>" >&2
+  echo "EXAMPLES:" >&2
+  echo "* $SN /home" >&2
+  echo "* $SN /home | report-usage" >&2
+  exit 1
+fi
+
+FROM=$1
+
+find -L $FROM -type d -name node_modules |
+  egrep -v 'node_modules.*node_modules'

@@ -13,4 +13,4 @@ My scripts
 
 ## Cheers!
 
-&mdash; Alex Fortuna, &copy; 2003-2019
+&mdash; Alex Fortuna, &copy; 2003-2020
