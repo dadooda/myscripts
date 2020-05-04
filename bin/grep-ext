@@ -20,6 +20,7 @@ if [ $# = 0 ]; then
   echo "USAGE: $SN <string> [grep-opts]" >&2
   echo "EXAMPLES:"
   echo "* $SN OPTIMIZE"
+  echo "* $SN OPTIMIZE -n"
   echo "* $SN 'TODO|OPTIMIZE'"
   exit 1
 fi
