@@ -16,12 +16,14 @@ SN=${0##*/}
 EXT=${SN#grep-}
 
 if [ $# = 0 ]; then
-  echo "egrep in *.$EXT files" >&2
-  echo "USAGE: $SN <string> [grep-opts]" >&2
-  echo "EXAMPLES:"
-  echo "* $SN OPTIMIZE"
-  echo "* $SN OPTIMIZE -n"
-  echo "* $SN 'TODO|OPTIMIZE'"
+  {
+    echo "egrep in *.$EXT files"
+    echo "USAGE: $SN <string> [grep-opts]"
+    echo "EXAMPLES:"
+    echo "* $SN OPTIMIZE"
+    echo "* $SN OPTIMIZE -n"
+    echo "* $SN 'TODO|OPTIMIZE'"
+  } >&2
   exit 1
 fi
 
