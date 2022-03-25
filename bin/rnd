@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+dd if=/dev/urandom count=1 2> /dev/null | base64 | tr -c [:alnum:] 0
