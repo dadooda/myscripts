@@ -4,12 +4,21 @@
 # Print parts of my typical (highly opinionated) `.gitignore`.
 #
 
-echo '
-# Old etc.
+echo '# Old etc.
 *.old*
 *.orig
 /*.patch
 *.ref*
 
-# IDE.
+# Intermediate vendor solutions.
+/vendor/
+
+# Nonpersistent stuff.
+TODO.md
+
+# Shared VS Code settings.
+/.vscode/*
+!/.vscode/*.json
+
+# Custom VS Code settings.
 /*.code-workspace'
