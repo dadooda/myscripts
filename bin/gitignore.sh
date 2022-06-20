@@ -4,7 +4,8 @@
 # Print parts of my typical (highly opinionated) `.gitignore`.
 #
 
-echo '# Old etc.
+cat <<EOT
+# Old etc.
 *.old*
 *.orig
 /*.patch
@@ -22,3 +23,4 @@ TODO.md
 
 # Custom VS Code settings.
 /*.code-workspace'
+EOT
