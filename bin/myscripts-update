@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+#
+# Update Myscripts from the repo.
+#
+
+# Get script path.
+SP=${0%/*}
+
+# Set strict mode.
+set -u -o pipefail
+
+# WARNING! Cd.
+cd "$SP" || exit 1
+
+#--------------------------------------- Chunks
+
+check_git() {
+  git --version >/dev/null
+}
+
+# Print Git branch and check if pwd is a working copy.
+get_branch() {
+  git branch --show-current
+}
+
+update() {
+  (
+    echo "In `pwd`:"
+    set -x
+    git pull origin master
+  )
+}
+
+#---------------------------------------
+
+main() {
+  local BR
+
+  check_git || return 1
+  BR=`get_branch` || return 1
+
+  if [ "$BR" != "master" ]; then
+    echo "Current branch is not 'master', aborting (branch is '${BR}')" >&2
+    return 1
+  fi
+
+  update || return 1
+
+  echo "Update complete"
+}
+
+main
