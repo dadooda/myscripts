@@ -50,4 +50,4 @@ main() {
   echo "Update complete"
 }
 
-main
+main || echo "Update error, see messages above" >&2
