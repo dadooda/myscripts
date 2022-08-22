@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+#
+# Run the basic Deno `file_server.ts` in current directory.
+#
+
+set -x
+deno run --allow-read --allow-net https://deno.land/std@0.152.0/http/file_server.ts "$@"
