@@ -22,5 +22,5 @@ TODO.md
 !/.vscode/*.json
 
 # Custom VS Code settings.
-/*.code-workspace'
+/*.code-workspace
 EOT
