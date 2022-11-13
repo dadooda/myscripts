@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+#
+# Generate alphabetically spaced ballast files.
+#
+
+# Configuration.
+C_NFILES="36"
+C_SIZE="100"
+
+DFL="N"; read -ep "Generate ballast files in current directory (n:${C_NFILES} size:${C_SIZE}K)? [$DFL]: "
+REPLY=${REPLY:-$DFL}
+[ "${REPLY,,}" = "y" ] || exit 0
+
+# Set strict mode.
+set -u -o pipefail
+
+for I in {0..9} {a..z}
+do
+  FN="${I}.ballast"
+  dd if=/dev/urandom of=${FN} bs=1K count=${C_SIZE} status=none
+  ls -l ${FN}
+done
