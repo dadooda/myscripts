@@ -5,4 +5,5 @@
 #
 
 echo '# Get script path.
-SP=${0%/*}'
+SP=${0%/*}
+#SP=${BASH_SOURCE[0]%/*}'
