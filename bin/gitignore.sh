@@ -11,6 +11,9 @@ cat <<EOT
 /*.patch
 *.ref*
 
+# Variable data.
+/var/
+
 # Intermediate vendor solutions.
 /vendor/
 
