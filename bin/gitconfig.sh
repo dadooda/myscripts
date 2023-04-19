@@ -37,6 +37,9 @@ cat <<EOT
   line-graphics = utf-8
   vertical-split = no
 
+[tig "color"]
+  date = cyan bold
+
 [pager]
   # Pagination settings.
   branch = no
