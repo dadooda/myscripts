@@ -1,3 +1,15 @@
 #!/usr/bin/env bash
 
-dd if=/dev/urandom count=1 2> /dev/null | base64 | tr -c [:alnum:] 0
+#
+# Generate a random Base64 string.
+#
+#   $ rnd
+#   $ rnd 20
+
+CMD="dd if=/dev/urandom count=1 2> /dev/null | base64 | tr -c [:alnum:] 0"
+
+if [ $# = 0 ]; then
+  eval $CMD
+else
+  eval $CMD | cut -c-${1}
+fi
