@@ -38,7 +38,7 @@ cat <<EOT
   vertical-split = no
 
 [tig "color"]
-  date = blue black bold
+  date = blue default bold
 
 [pager]
   # Pagination settings.
