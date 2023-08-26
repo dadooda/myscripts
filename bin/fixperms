@@ -4,7 +4,7 @@
 # Recursively set file or directory permissions. Use with care.
 #
 
-# TODO: Brush up!
+# OPTIMIZE: Brush up upon touch.
 
 # NOTE: 'fixperm' existed in early Linux distributions, hence our name is 'fixperms'.
 
