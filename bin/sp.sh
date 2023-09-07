@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #
-# Print Bash code.
+# Print Bash code to get current script path.
 #
 
 echo '# Get script path.
