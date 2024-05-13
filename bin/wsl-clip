@@ -15,13 +15,13 @@ is_tty() {
 
 retrieve() {
   local CB
-  CB=`powershell.exe Get-Clipboard | tr -d '\r'`
+  CB=$(powershell.exe Get-Clipboard | tr -d '\r')
   if [ $? != 0 ]; then
     echo "Error getting clipboard content" >&2
     return 1
   fi
 
-  if [ -z "$CB" ]; then
+  if [ -z "${CB}" ]; then
     echo "The clipboard is empty" >&2
     return 1
   fi
