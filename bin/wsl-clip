@@ -5,6 +5,14 @@
 # 2) Print Windows clipboard contents.
 #
 
+#--------------------------------------- Configuration
+
+# Your configured Windows' 8-bit codepage.
+# CP866 is Cyrillic. Do a `iconv -l` for a full list.
+C_CODEPAGE="CP866"
+
+#--------------------------------------- Functions
+
 # Set strict mode.
 set -u -o pipefail
 
@@ -14,10 +22,12 @@ is_tty() {
 }
 
 retrieve() {
+  require_iconv || return 1
+
   local CB
   CB=$(powershell.exe Get-Clipboard | tr -d '\r')
   if [ $? != 0 ]; then
-    echo "Error getting clipboard content" >&2
+    echo "Error getting clipboard contents" >&2
     return 1
   fi
 
@@ -26,12 +36,21 @@ retrieve() {
     return 1
   fi
 
-  echo "${CB}"
+  echo "${CB}" | iconv -f ${C_CODEPAGE} -t UTF8
+}
+
+require_iconv() {
+  if ! which iconv >/dev/null; then
+    echo "\`iconv\` is required. Please install" >&2
+    return 1
+  fi
 }
 
 # Store into the clipboard.
 store() {
-  clip.exe
+  require_iconv || return 1
+
+  iconv -f UTF8 -t ${C_CODEPAGE} | clip.exe
 }
 
 #--------------------------------------- Main
