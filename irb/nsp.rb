@@ -3,7 +3,7 @@
 # Provide `obj.nsp` and `obj.nsp!` for precise method inspection.
 #
 
-class Object
+module Nsp
   # @param [Symbol | String | nil] meth Method to be called on M-method result.
   def nsp(meth = nil, *args, &block)
     _nsp(true, meth, *args, &block)
@@ -71,4 +71,8 @@ EOT
 
     nil
   end
+end
+
+class Object
+  include Nsp
 end
