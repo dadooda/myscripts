@@ -17,9 +17,6 @@ cat <<EOT
 # Intermediate vendor solutions.
 /vendor/
 
-# Nonpersistent stuff.
-TODO.md
-
 # Shared VS Code settings.
 /.vscode/*
 !/.vscode/*.json
