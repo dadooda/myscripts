@@ -4,10 +4,10 @@
 # Print ANSI codes cheatsheet.
 #
 
-for attr in $(seq 0 1); do
-  for fg in $(seq 30 37); do
-    for bg in $(seq 40 47); do
-      printf "\033[${attr};${bg};${fg}m${attr};$fg;$bg\033[m "
+for ATTR in $(seq 0 1); do
+  for FG in $(seq 30 37); do
+    for BG in $(seq 40 47); do
+      echo -en "\e[${ATTR};${BG};${FG}m${ATTR};$FG;$BG\e[m "
     done
     echo
   done
