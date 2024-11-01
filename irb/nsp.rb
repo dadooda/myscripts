@@ -19,21 +19,20 @@ class Object
   # @param [Boolean] tf Argument of each M-method call.
   # @param [Symbol | String | nil] meth Method to be called on M-method result.
   def _nsp(tf, meth = nil, *args, &block)
-    ### Colors. ###
-
+    # Colors.
     c = -> (code) { "\e[#{code}m" }
     ch = c.("1;33")   # Heading.
     cm = c.("33")     # Method.
     cre = c.("31")    # Result, error.
     cro = c.("32")    # Result, ok.
-    z = c.("0")       # Reset. Same for all.
+    cz = c.("")       # Reset. Same for all.
 
     # Incorrect call? Show help.
     if !meth
       puts <<-EOT
-#{ch}USAGE: <obj>.nsp(<meth>, [...args])#{z}
+#{ch}USAGE: <obj>.nsp(<meth>, [...args])#{cz}
 
-#{ch}EXAMPLES:#{z}
+#{ch}EXAMPLES:#{cz}
 
 * Class.nsp :grep, /inst/
 * "".nsp! :grep, //
@@ -46,7 +45,7 @@ EOT
     mmeths = methods.grep(/methods$/).sort
 
     mmeths.each_with_index do |mm, i|
-      puts "#{cm}#{i + 1}. #{mm}#{z}"
+      puts "#{cm}#{i + 1}. #{mm}#{cz}"
 
       # Call M-method, get an array of method names as Symbol.
       ar = case mm
@@ -60,9 +59,9 @@ EOT
       # Process the array, print informative result.
       begin
         res = ar.public_send(meth, *args, &block)
-        puts "#{cro}#{res.inspect}#{z}"
+        puts "#{cro}#{res.inspect}#{cz}"
       rescue => e
-        puts "#{cre}#{e.inspect}#{z}"
+        puts "#{cre}#{e.inspect}#{cz}"
       end
 
       # Separate report lines, separate entire output.
