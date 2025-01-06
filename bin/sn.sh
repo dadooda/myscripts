@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #
-# Print Bash code to get current script name.
+# Print Bash code.
 #
 
 echo '# Get script name.
